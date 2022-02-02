@@ -1,12 +1,17 @@
 import React from 'react';
 import './App.css';
+import { Router } from './router/router';
+import { Link } from 'react-router-dom';
 
-function App() {
+export const App: React.FC = () => {
   return (
-    <div className="App">
-      <h1>Siema!</h1>
-    </div>
-  );
-}
-
-export default App;
+  		<div className="wrap">
+  			<div>
+  				App <Link to={'/sign-in'}>Go to Sign App</Link>
+  			</div>
+  			<div>
+  				<Router />
+  			</div>
+  		</div>
+  	);
+};
