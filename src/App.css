@@ -31,3 +31,17 @@ body {
   }
 }
 
+.navList {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+}
+
+.navList a {
+  text-decoration: none;
+  color: #00e6e6;
+}
+
+.navList a.active {
+  color: #ff9966;
+}

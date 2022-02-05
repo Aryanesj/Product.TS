@@ -3,14 +3,16 @@ import { SignInPage } from '../pages/SignInPage/SignInPage';
 import { HomePage } from '../pages/HomePage/HomePage';
 import { Page404 } from '../pages/Page404/Page404';
 
-interface Route {
-	name: string;
+interface RouteItem {
+	name: Routes;
 	path: string;
 	component: FC;
 	private: boolean;
 };
 
-export const routeList: Route[] = [
+type Routes = 'SignInPage' | 'HomePage' | 'Page404';
+
+export const routeList: RouteItem[] = [
 	{
 		name: 'SignInPage',
 		path: '/sign-in',
@@ -20,7 +22,7 @@ export const routeList: Route[] = [
 
 	{
 		name: 'HomePage',
-		path: '/sign-in',
+		path: '/home-page',
 		component: HomePage,
 		private: true,
 	},
@@ -32,3 +34,15 @@ export const routeList: Route[] = [
 		private: false,
 	},
 ];
+
+export const getRouthPath = (routeName: Routes): string => {
+	const pathIndex = routeList.findIndex(
+		(routeItem) => routeItem.name === routeName,
+	);	
+
+	if(pathIndex === -1) {
+		throw new Error('there is no route');
+	}
+
+	return routeList[pathIndex].path;
+};
